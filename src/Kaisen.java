@@ -1,34 +1,42 @@
-import java.io.IOException;
-
 public class Kaisen{
-	static String name = "山本五十六";//名前
+	static String name = "山本五十六"; //名前
+	static String ship = "大和";       //艦の名前
+	static int lv = 1;                 //艦のレベル
 	
-	public static void main(String[] args) throws IOException{
-		System.out.println(name +"提督ご決断を！！");	
-			}
-	
-	public static void Command() throws IOException{
-		Command();
-		System.out.println("停船場所を決定してください");
-		System.out.println("1：港内");
-		System.out.println("2：内湾（港外）");
+	public static void main(String[] args) throws java.io.IOException {
 		
-		public static void InputCommand(){
-			int c = System.in.read();
-			System.out.printf("a=%dが押されています",a);
+		Greet();      //最初のメッセージ
+		PutCommand(); //選択肢の表示
+		InCommand();  //行動の選択
 		
-			if(c == '1'){
-				System.out.println("あなたの船は破壊されました");
-			}else{
-				System.out.println("あなたの船は被害を免れました");
-			}
-				
-			
-			/*switch(c){
-				case '1' : System.out.println("あなたの船は破壊されました"); Command();
-				case '2' : System.out.println("あなたの船は被害を免れた");   Command();
-			
-			}*/
-		}
 	}
+	
+	public static void Greet(){
+		System.out.println(name + "提督" + ship + "にご命令を！！"); //挨拶	
+		System.out.println(ship + "のLVは" + lv + "です。"); //艦のステータス
+	}
+	
+	public static void PutCommand(){
+		System.out.println("行動を決定してください");
+		System.out.println("1：出撃");
+		System.out.println("2：演習");
+	}
+	
+	public static void InCommand() throws java.io.IOException {
+		int c = System.in.read(); 
+		System.out.println("入力されたキー番号は" + c + "です。");
+		
+		//改行外し
+		if (c == 10 || c == 13){
+			System.out.println("改行は入力できません");
+			InCommand();
+		}
+		
+		if(c == '1'){
+			System.out.println("あなたの船は破壊されました");
+		}if(c == '2'){
+			System.out.println("あなたの船は被害を免れました");
+		}else{
+		}
+	}	
 }
