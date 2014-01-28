@@ -7,8 +7,14 @@ public class Kaisen{
 		
 		Greet();      //最初のメッセージ
 		PutCommand(); //選択肢の表示
-		InCommand();  //行動の選択
-		
+		int c = InCommand(); //行動の選択
+				
+		if(c == '1'){
+			System.out.println("あなたの船は破壊されました");
+		}if(c == '2'){
+			System.out.println("あなたの船は被害を免れました");
+			
+		}
 	}
 	
 	public static void Greet(){
@@ -17,26 +23,24 @@ public class Kaisen{
 	}
 	
 	public static void PutCommand(){
-		System.out.println("行動を決定してください");
+		System.out.println("行動を決定してください。");
 		System.out.println("1：出撃");
 		System.out.println("2：演習");
 	}
 	
-	public static void InCommand() throws java.io.IOException {
+	public static int InCommand() throws java.io.IOException{
 		int c = System.in.read(); 
 		System.out.println("入力されたキー番号は" + c + "です。");
 		
 		//改行外し
 		if (c == 10 || c == 13){
 			System.out.println("改行は入力できません");
-			InCommand();
+			return(InCommand());
+		}else{
+		return(c);
 		}
 		
-		if(c == '1'){
-			System.out.println("あなたの船は破壊されました");
-		}if(c == '2'){
-			System.out.println("あなたの船は被害を免れました");
-		}else{
-		}
-	}	
+	}
+	
+		
 }
