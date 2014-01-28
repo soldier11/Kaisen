@@ -14,13 +14,21 @@ public class Kaisen{
 		System.out.println("2：内湾（港外）");
 		
 		public static void InputCommand(){
-			int a = System.in.read();
+			int c = System.in.read();
 			System.out.printf("a=%dが押されています",a);
 		
-			switch(a){
+			if(c == '1'){
+				System.out.println("あなたの船は破壊されました");
+			}else{
+				System.out.println("あなたの船は被害を免れました");
+			}
+				
+			
+			/*switch(c){
 				case '1' : System.out.println("あなたの船は破壊されました"); Command();
 				case '2' : System.out.println("あなたの船は被害を免れた");   Command();
-			}
+			
+			}*/
 		}
 	}
 }
