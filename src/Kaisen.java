@@ -5,51 +5,48 @@ public class Kaisen{
 	
 	public static void main(String[] args) throws java.io.IOException {
 		
-		put(name + "提督" + ship + "にご命令を！！"); //挨拶
-		Status();             //最初のメッセージ
-		PutCommand();        //選択肢の表示
-		Result();            //勝敗の表示
+		put(name + " 提督。" + ship + "にご命令を！！"); //最初のメッセージ
+		status();            //艦のステータス 
+		putCommand();        //選択肢の表示
+		
+		 //勝敗の表示
+		if(lv > 6){
+			put("勝利");
+		}else{
+			put("負け");
+		}
 	}
 	
-	public static void Status(){
+	public static void status(){
 		put("---------------------------");
 		put(" " + name + " " + ship + " LV" + lv + " "); //艦のステータス
 		put("---------------------------");
 	}
-	
-	public static void PutCommand() throws java.io.IOException{
-		put("大和への指令を決定してください。");
-		put("1：出撃");
-		put("2：演習");
-		int c = InCommand(); //行動の選択
-		
-		if(c == '1'){
-			put("敵戦艦が現れた。大和の主砲で攻撃します。");
-		}else{
-			lv += 1;
-			put("演習により"+ ship +"のレベルが"+ lv +"になった。");
-			PutCommand();
-		}
+				
+	 public static void putCommand() throws java.io.IOException{
+		int c;
+		do {
+	        System.out.println("大和への指令を決定してください。");
+	        System.out.println("1：出撃");
+	        System.out.println("2：演習");
+	        c = inCommand();
+	        if (c == '1') {
+	            System.out.println("敵戦艦が現れた。大和の主砲で攻撃します。");
+	        } else if (c == '2') {
+	        	lv += 1;
+	            System.out.println("演習により" + ship + "のレベルが" + lv + "になった。");
+	        }
+        } while (c == '2');
 	}
 	
-	public static int InCommand() throws java.io.IOException{
-		int c = System.in.read(); 
-		if (c == 10 || c == 13){//改行外し
-			return(InCommand());
-		}else{
-			
+	public static int inCommand() throws java.io.IOException{
+		int c;
+		do {
+			c = System.in.read(); 		
+		}while(c == 10 || c == 13);	
 		return(c);
-		}
 	}
 	
-	public static void Result() throws java.io.IOException {
-		if(lv > 6){
-			put("勝利");
-		}else{
-			put("負け");			
-		}
-	}
-		
 	public static void put(String str){
 		System.out.println(str);
 	}
