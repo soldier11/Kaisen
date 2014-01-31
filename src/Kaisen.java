@@ -40,7 +40,7 @@ public class Kaisen {
 				System.out.println("演習により" + ship + "のレベルが" + lv + "になった。");
 			} else if (c == '3') {
 				put("変更後の名前を入力してください。");
-				String name = inCommand02(); // 再定義して戻った時のstatus等で繰り返し使いたい・・・
+				name =inCommand02(); // 再定義して戻った時のstatus等で繰り返し使いたい・・・
 				put("名前を間違えてごめんなさい" + name + "提督。");
 			} else {
 				put("正しい値を入力してください");
@@ -63,10 +63,10 @@ public class Kaisen {
 	public static String inCommand02() throws java.io.IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		String line;
-		while ("".equals((line = in.readLine()))) {
+		while ("".equals(line = in.readLine())) {
 			System.out.println("何かを入力してください");
 		}
 		System.out.println("入力文字列: " + line);
-		return (line);
+		return(line);
 	}
 }
